@@ -22,9 +22,16 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    StreamToken.logout! session
-    super
-    flash[:success] = flash[:notice]
-    flash[:notice] = nil
+    logger.info "logout of #{Avalon::Authentication::VisibleProviders.first[:provider]} for #{current_user.inspect}"
+    if Avalon::Authentication::VisibleProviders.first[:provider] == :cas
+      StreamToken.logout! session
+      sign_out(current_user)
+      redirect_to 'https://secure.its.yale.edu/cas/logout'
+    else
+      StreamToken.logout! session
+      super
+      flash[:success] = flash[:notice]
+      flash[:notice] = nil
+    end
   end
 end
