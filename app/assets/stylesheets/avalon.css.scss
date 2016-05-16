@@ -34,10 +34,10 @@
 }
 
 a:not(.btn) {
-  color: $linkColor;
-  &:hover { color: $linkColor; }
-  &:active { color: $linkColor; }
-  &:visited { color: $linkColor; }
+  color: $yaleLink;
+  &:hover { color: $yaleLink; }
+  &:active { color: $yaleLink; }
+  &:visited { color: $yaleLink; }
 }
 @mixin hidden-disabled-link  {
   text-decoration: none !important;
@@ -228,6 +228,7 @@ a.navbar-brand.desktop-hidden.outline_on {width: 75%;}
   margin-bottom: 2px;
 }
 
+
 /*
  * Fix that shouldn't be needed to make sure that the text behaves like a regular
  * link
@@ -337,6 +338,7 @@ span.collections {
   font-family: "TheSans-SemiLight", Helvetica Neue, Arial, sans-serif;
   font-size: 2em;
   padding-left: 1.5em;
+  color: #9b2621;
 }
 
 .collections a:not(.btn){
@@ -362,6 +364,24 @@ span.collections {
   height: 25px;
   width: 100%;
   vertical-align: middle;
+}
+
+button.search_button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 20px;
+}
+
+i.fa.fa-search.icon-white {
+  color: #9b2621;
+  font-size: 1em;
+}
+
+/* Start search over link */
+a#startOverLink.catalog_startOverLink.btn.btn-sm.btn-text.outline_on {
+  color: #9b2621;
+  text-shadow: none;
 }
 
 /* Sidebar */
