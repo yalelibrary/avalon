@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150824155143) do
     t.string   "document_type"
   end
 
-  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "context_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150824155143) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "identities", force: true do |t|
     t.string   "email"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150824155143) do
     t.string   "user_type"
   end
 
-  add_index "searches", ["user_id"], name: "index_searches_on_user_id"
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id",                  null: false
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20150824155143) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "stream_tokens", force: true do |t|
     t.string   "token"
@@ -111,6 +111,6 @@ ActiveRecord::Schema.define(version: 20150824155143) do
     t.string   "guest"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

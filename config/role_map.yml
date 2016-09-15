@@ -37,11 +37,11 @@ development:
 
 test: &TEST
 - administrator:
-  -
+  - 
 - manager:
-  -
+  - 
 - group_manager:
-  -
+  - 
 
 production:
 - collection_manager:

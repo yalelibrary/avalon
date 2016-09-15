@@ -1,6 +1,6 @@
 administrator:
-  - archivist1@example.com
+  - go27
 manager:
-  - archivist1@example.com
+  - go27
 group_manager:
-  - archivist1@example.com
+  - go27 
