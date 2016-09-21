@@ -185,6 +185,13 @@ class MediaObject < ActiveFedora::Base
     super
   end
 
+  def get_ordered_pids
+    ordered_pids = self.section_pid
+    missing_from_order = self.part_ids - ordered_pids
+    missing_parts = ordered_pids - self.part_ids
+    ordered_pids + missing_from_order - missing_parts
+  end
+  
   # Removes one or many MasterFiles from parts_with_order
   def parts_with_order_remove part
     self.parts_with_order = self.parts_with_order.reject{|master_file| master_file.pid == part.pid }
@@ -194,8 +201,17 @@ class MediaObject < ActiveFedora::Base
     self.section_pid = master_files.map(&:pid)
   end
 
-  def parts_with_order
-    self.section_pid.map{|pid| MasterFile.find(pid)}
+  def parts_with_order(opts = {})
+    pids_with_order = get_ordered_pids
+    if !!opts[:load_from_solr]
+      return [] if pids_with_order.empty?
+      pid_list = pids_with_order.uniq.map { |pid| RSolr.solr_escape(pid) }.join ' OR '
+      solr_results = ActiveFedora::SolrService.query("id\:(#{pid_list})", rows: pids_with_order.length)
+      mfs = ActiveFedora::SolrService.reify_solr_results(solr_results, load_from_solr: true)
+      pids_with_order.map { |pid| mfs.find { |mf| mf.pid == pid }}
+    else
+      pids_with_order.map{|pid| MasterFile.find(pid)}
+    end
   end
 
   def section_pid=( pids )
