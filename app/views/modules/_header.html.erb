@@ -18,9 +18,7 @@ Unless required by applicable law or agreed to in writing, software distributed
       <div class="row-fluid whitespace-half">
       <header>
         <div class="col-sm-2 logo">
-        <%= link_to root_path do %>
-          <%= image_tag "yul_logo.png", alt: "Yale University Library", class: "yale-logo" %>
-        <% end %>
+          <%= link_to(image_tag("yul_logo.png", :alt => "Yale University Library", :title => "Yale University Library", :class => "yale-logo"), "http://web.library.yale.edu") %>
         </div>
         
         <!-- <div class="col-md-6">
@@ -44,7 +42,9 @@ Unless required by applicable law or agreed to in writing, software distributed
   <div class="hidden-xs">
   <div class="row">
     <div class="row-fluid" id="subnav">
-      <span class="collections"><a href="#">Media Collections</a></span>
+      <%= link_to root_path do %> 
+        <span class="collections">Media Collections</span>
+      <% end %>  
     </div>
   </div>    
 </div>
