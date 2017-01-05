@@ -1,0 +1,47 @@
+---
+production:
+  name: Avalon
+  fedora:
+    namespace: avalon
+  domain:
+    host: avalon1-test.library.yale.edu
+    port: 80
+  dropbox:
+    path: "/var/avalon/dropbox"
+    upload_uri: sftp://avalon1-test.library.yale.edu/var/avalon/dropbox
+    username: test
+    password: test
+    notification_email_address: ''
+  matterhorn:
+    root: http://avalon1-test.library.yale.edu:8080/
+    baseApplication: avalon
+    cleanup_log: log/cleanup_jobs.log
+  mediainfo:
+    path: "/usr/bin/mediainfo"
+  email:
+    comments: libraryit.digitalcollection@yale.edu
+    notification: libraryit.digitalcollection@yale.edu
+    support: libraryit.digitalcollection@yale.edu
+    mailer:
+      smtp:
+        address: mail.yale.edu
+        port: '25'
+        enable_starttls_auto: false
+  streaming:
+    server: :wowza
+    stream_token_ttl: 20
+    content_path: '/usr/local/WowzaStreamingEngine/avalon'
+    rtmp_base: rtmp://avalon1-test.library.yale.edu/avalon
+    http_base: http://avalon1-test.library.yale.edu:1935/avalon/_definst_
+    default_quality: low
+  groups:
+    system_groups:
+    - administrator
+    - group_manager
+    - manager
+  master_file_management:
+    strategy: none
+  ffmpeg:
+    path: "/usr/bin/ffmpeg"
+  controlled_vocabulary:
+    path: config/controlled_vocabulary.yml
