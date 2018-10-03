@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
     username = access_token.uid
     email = access_token.info.email
     User.find_by(username: username) || User.find_by(email: email) || User.create(username: username, email: email)
+
   def self.find_for_cas(access_token, singed_in_resource=nil)
     logger.info "in find_for_cas"
     user_info = User.getExtraFromLDAP(access_token.uid)
@@ -127,6 +128,7 @@ class User < ActiveRecord::Base
     entry = Avalon::GROUP_LDAP.search(:base => Avalon::GROUP_LDAP_TREE, :filter => Net::LDAP::Filter.eq("cn", cn), :attributes => ["memberof"]).first
     entry.nil? ? [] : entry["memberof"].collect {|mo| mo.split(',').first.split('=').second}
   end
+  end
 
   def self.walk_ldap_groups(groups, seen)
     groups.each do |g|
@@ -137,7 +139,7 @@ class User < ActiveRecord::Base
     seen
   end
 
-  protected
+  #protected
 
   def self.getExtraFromLDAP(netid)
     begin
