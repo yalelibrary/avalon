@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 20171130201127) do
 
   create_table "batch_entries", force: :cascade do |t|
     t.integer  "batch_registries_id"
-    t.text     "payload",             limit: 4294967295
+    t.text     "payload",             limit: 1073741823
     t.boolean  "complete",                               default: false, null: false
     t.boolean  "error",                                  default: false, null: false
     t.string   "current_status"
-    t.string   "error_message"
+    t.text     "error_message",       limit: 65535
     t.string   "media_object_pid"
     t.integer  "position"
     t.datetime "created_at"

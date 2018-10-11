@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
     username = access_token.uid
     email = access_token.info.email
     User.find_by(username: username) || User.find_by(email: email) || User.create(username: username, email: email)
+  end
 
   def self.find_for_cas(access_token, singed_in_resource=nil)
     logger.info "in find_for_cas"
@@ -84,7 +85,7 @@ class User < ActiveRecord::Base
       logger.info "no user found, creating #{provider.upcase} user #{username} email #{email}"
       user = User.new(:username => username, :provider => provider, :email => email)
       user.save!
-    end 
+    end
     user
   end
 
@@ -125,9 +126,10 @@ class User < ActiveRecord::Base
 
   def self.ldap_member_of(cn)
     return [] unless defined? Avalon::GROUP_LDAP
-    entry = Avalon::GROUP_LDAP.search(:base => Avalon::GROUP_LDAP_TREE, :filter => Net::LDAP::Filter.eq("cn", cn), :attributes => ["memberof"]).first
+    entry = Avalon::GROUP_LDAP.search(:base => Avalon::GROUP_LDAP_TREE, 
+                                      :filter => Net::LDAP::Filter.eq("cn", cn), 
+                                      :attributes => ["memberof"]).first
     entry.nil? ? [] : entry["memberof"].collect {|mo| mo.split(',').first.split('=').second}
-  end
   end
 
   def self.walk_ldap_groups(groups, seen)
@@ -139,21 +141,30 @@ class User < ActiveRecord::Base
     seen
   end
 
-  #protected
+  protected
 
   def self.getExtraFromLDAP(netid)
     begin
       require 'net/ldap'
-      ldap = Net::LDAP.new( :host =>"directory.yale.edu" , :port =>"389" )
+      ldap = Net::LDAP.new( :host =>"directory-new.its.yale.edu", 
+                            :port =>"636",
+                            :encryption => {
+                              method: :simple_tls,
+                              tls_options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
+                            },
+                            :base => "dc=yale,dc=edu",
+                            :auth => {
+                              :method => :simple,
+                              :username => "cn=s_ldlp,ou=serviceaccounts,dc=yale,dc=edu",
+                              :password => "2W796I5CAH0yRyJ" })
       f = Net::LDAP::Filter.eq('uid', netid)
-      b = 'ou=People,o=yale.edu'
+      b = 'dc=yale,dc=edu'
       p = ldap.search(:base => b, :filter => f, :return_result => true).first
     rescue Exception => e
       return
     end
     return p
   end
-
 end
 
-class Avalon::MissingUserId < StandardError; end
+#class Avalon::MissingUserId < StandardError; end
