@@ -196,6 +196,10 @@ GEM
       activemodel (= 4.2.9)
       activesupport (= 4.2.9)
       arel (~> 6.0)
+    activerecord-mysql-adapter (0.0.1)
+      activerecord (>= 3.2.9)
+      activesupport (>= 3.2.9)
+      mysql (>= 2.9.0)
     activerecord-session_store (1.1.0)
       actionpack (>= 4.0, < 5.2)
       activerecord (>= 4.0, < 5.2)
@@ -522,6 +526,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mysql (2.9.1)
     mysql2 (0.4.9)
     net-http-digest_auth (1.4.1)
     net-ldap (0.16.0)
@@ -563,6 +568,9 @@ GEM
     parallel (1.12.0)
     parser (2.4.0.2)
       ast (~> 2.3)
+    passenger (5.3.5)
+      rack
+      rake (>= 0.8.1)
     pg (0.21.0)
     poltergeist (1.16.0)
       capybara (~> 2.1)
@@ -856,6 +864,7 @@ DEPENDENCIES
   active_fedora-datastreams
   active_fedora-noid (~> 2.0.2)
   activejob-traffic_control
+  activerecord-mysql-adapter
   activerecord-session_store
   acts_as_list
   api-pagination
@@ -919,6 +928,7 @@ DEPENDENCIES
   omniauth-identity
   omniauth-lti!
   parallel
+  passenger (= 5.3.5)
   pg
   poltergeist
   pry-byebug
