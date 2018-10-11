@@ -135,6 +135,7 @@ end
 group :production do
   gem 'google-analytics-rails', '1.1.0'
   gem 'lograge'
+  gem 'passenger', '5.3.5'
 end
 
 # Install the bundle --with aws when running on Amazon Elastic Beanstalk
@@ -158,6 +159,7 @@ end
 
 # Install the bundle --with mysql if using mysql as the database backend
 group :mysql, optional: true do
+  gem 'activerecord-mysql-adapter'
   gem 'mysql2'
 end
 
