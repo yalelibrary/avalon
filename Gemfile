@@ -159,7 +159,6 @@ end
 
 # Install the bundle --with mysql if using mysql as the database backend
 group :mysql, optional: true do
-  gem 'activerecord-mysql-adapter'
   gem 'mysql2'
 end
 
