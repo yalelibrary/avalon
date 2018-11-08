@@ -1,0 +1,3 @@
+---
+BUNDLE_WITHOUT: "zoom"
+BUNDLE_WITH: "mysql"

@@ -167,4 +167,4 @@ class User < ActiveRecord::Base
   end
 end
 
-#class Avalon::MissingUserId < StandardError; end
+class Avalon::MissingUserId < StandardError; end
