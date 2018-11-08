@@ -277,8 +277,9 @@ input[type="text"]#admin_group {
 
 /* Header */
 .custom-header {
-  background-color: #e9e9e9;
-  color: $black;
+  background-color: #01346b;
+  height: 50px;
+  color: $white;
   margin-bottom: 0em;
   font-size: .8em;
   @extend .mobile-hidden;
@@ -287,6 +288,11 @@ input[type="text"]#admin_group {
   }
 }
 
+img.yale-logo {
+  max-width: 100%;
+  height: auto !important;
+  margin-left: 1em;
+}
 
 header div{
   padding: 1em;
@@ -304,6 +310,23 @@ header div{
 
 .navbar-inner {
   padding-right: 12px;
+}
+
+div#subnav.row-fluid {
+  background-color: #e8e8e8;
+  height: auto;
+  border-bottom: 3px solid #9b2621;
+  margin-bottom: .5em;
+}
+
+.collections a:not(.btn) {
+  color: #9b2621;
+}
+
+span.collections {
+  font-family: "TheSans-SemiLight", Helvetica Neue, Arial, sans-serif;
+  font-size: 2em;
+  padding-left: 1.5em;
 }
 
 .container {

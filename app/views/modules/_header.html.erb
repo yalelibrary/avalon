@@ -19,7 +19,7 @@ Unless required by applicable law or agreed to in writing, software distributed
       <header>
         <div class="col-sm-2 logo">
         <%= link_to root_path do %>
-          <%= image_tag "Home.png", alt: "Avalon Media System - #{t(:release_label)} #{Avalon::VERSION}" %>
+          <%= image_tag "yul_logo.png", alt: "Yale University Library", class: "yale-logo" %>
         <% end %>
         </div>
         
@@ -33,6 +33,13 @@ Unless required by applicable law or agreed to in writing, software distributed
           <%= render 'modules/user_management' %>
         </div>
       </header>
+      </div>
+    </div>
+  </div>
+  <div class="hidden-xs">
+    <div class="row">
+      <div class="row-fluid" id="subnav">
+        <span class="collections"><a href="#">Media Collections</a></span>
       </div>
     </div>
   </div>
