@@ -89,7 +89,7 @@ $navCollapseWidth: 650px;
 $navbar-inverse-color:                      #777;
 $navbar-inverse-bg:                         #F9F9F9;
 $navbar-inverse-border:                     #D4D4D4;
-$navbar-inverse-link-bg:                    darken(navbar-inverse-bg, 10%);
+$navbar-inverse-link-bg:                    darken($navbar-inverse-bg, 10%);
 $navbar-inverse-link-color:                 #777;
 $navbar-inverse-link-hover-color:           $black;
 

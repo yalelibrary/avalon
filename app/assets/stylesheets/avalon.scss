@@ -117,6 +117,9 @@ tr.active-false td {
 #header-navbar .navbar-brand {
   @extend .desktop-hidden;
   height: 35px;
+  background: transparent url(/assets/yul_logo.png) no-repeat top left;
+  background-size: 80% !important;
+  margin: .5em 0 0 .5em;
 }
 
 .navbar {
@@ -161,6 +164,13 @@ tr.active-false td {
 #browse-btn {
   margin: .5em 0;
 }
+
+.navbar-header {background-color: #01346b;}
+button.navbar-toggle.collapsed.outline_on {background-color: #e8e8e8;}
+.navbar-inverse .navbar-toggle, .navbar-inverse .facets-toggle {background-color: #e8e8e8;}
+.navbar-inverse .navbar-nav > li > a {color: #9b2621;}
+
+a.navbar-brand.desktop-hidden.outline_on {width: 75%}
 
 // Custom file preview field for Jasny bootstrap
 .uneditable-input-exists {
@@ -322,9 +332,13 @@ header div{
   }
 }
 
+.fa {font-size: 1.2em}
+
 .navbar-inner {
   padding-right: 12px;
 }
+
+.navbar-right {margin-right: .5em;}
 
 div#subnav.row-fluid {
   background-color: #e8e8e8;
@@ -333,14 +347,14 @@ div#subnav.row-fluid {
   margin-bottom: .5em;
 }
 
-.collections a:not(.btn) {
-  color: #9b2621;
-}
-
 span.collections {
   font-family: "TheSans-SemiLight", Helvetica Neue, Arial, sans-serif;
   font-size: 2em;
   padding-left: 1.5em;
+}
+
+.collections a:not(.btn) {
+  color: #9b2621;
 }
 
 .container {
@@ -432,10 +446,15 @@ div[id*='facet-panel-'] {
 /* Footer */
 footer {
   margin-top: 10px;
-  padding-top: 20px;
+  padding-top: 10px;
   border-top: 1px solid #EEE;
+  /* height: 100px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   border-bottom: 1px solid #FFF;
-
+ */
   ul {
     margin-left: 0;
   }
@@ -446,13 +465,16 @@ footer {
   }
 
   li:before {
-    content: " - ";
+    content: " | ";
+    color: $black
   }
 
   li:first-child:before {
     content: none;
   }
 }
+
+.yalemark {width: 65px; margin-right: 1em;}
 
 footer a {
   color: $black;
@@ -466,8 +488,11 @@ footer ul {
   }
 }
 
+footer .links {margin-top: .5em;}
+
 footer .release {
   float: right;
+  margin-top: .5em;
   @media all and (max-width: 475px) {
     float: none;
   }
