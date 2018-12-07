@@ -294,17 +294,31 @@ img.yale-logo {
   margin-left: 1em;
 }
 
+@font-face {
+  font-family: 'TheSans-SemiBold';
+  src: url("fonts/TheSans_B2_600_.eot");
+  src: url("fonts/TheSans_B2_600_.eot?#iefix") format("embedded-opentype"), url("/assets/TheSans_B2_600_.woff") format("woff"), url("/assets/TheSans_B2_600_.svg") format("svg");
+}
+
+@font-face {
+  font-family: 'TheSans-SemiLight';
+  src: url("fonts/TheSans_B2_400_.eot");
+  src: url("fonts/TheSans_B2_400_.eot?#iefix") format("embedded-opentype"), url("/assets/TheSans_B2_400_.woff") format("woff"), url("/assets/TheSans_B2_400_.svg") format("svg");
+}
+
 header div{
   padding: 1em;
   @extend .mobile-hidden;
 }
 
 .log-in-out a {
-  color: #2A5459;
-  background-color: #FBB040;
-  padding: .8em;
-  &:after {
-    content: "\003e \003e"
+  color: #fff;
+  background-color: transparent;
+  padding: .2em;
+  font-family: "TheSans-SemiLight", Arial, Helvetica Neue, sans-serif;
+  font-size: 1.3em;
+  &:visited {
+    color: #fff;
   }
 }
 
