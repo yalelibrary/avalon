@@ -1,0 +1,5 @@
+set :bundle_flags,  '--with mysql'
+set :bundle_without, 'test production'
+set :rails_env, 'development'
+#set :deploy_to, '$HOME/avalon'
+server 'yul-av-tst1.library.yale.internal', roles: %w{web app resque_worker resque_scheduler}, user: 'avalon'
