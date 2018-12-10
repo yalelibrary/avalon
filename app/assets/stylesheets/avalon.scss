@@ -322,13 +322,13 @@ header div{
 }
 
 .log-in-out a {
-  color: #fff;
+  color: #fff !important;
   background-color: transparent;
   padding: .2em;
   font-family: "TheSans-SemiLight", Arial, Helvetica Neue, sans-serif;
   font-size: 1.3em;
   &:visited {
-    color: #fff;
+    color: #fff !important;
   }
 }
 
