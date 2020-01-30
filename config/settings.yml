@@ -4,8 +4,8 @@ domain:
   port: 80
   protocol: http
 dropbox:
-  path: /var/avalon/dropbox
-  upload_uri: sftp://localhost
+  path: /srv/avalon/dropbox
+  upload_uri: sftp://avalon.example.edu
 encoding:
   engine_adapter: matterhorn
 matterhorn:
@@ -18,9 +18,9 @@ ffmpeg:
   path: '/usr/local/bin/ffmpeg'
 email:
   mailer: :smtp
-  comments: 'admin@yexample.com'
-  notification: 'admin@example.com'
-  support: 'admin@example.com'
+  comments: 'avalon-comments@example.edu'
+  notification: 'avalon-notifications@example.edu'
+  support: 'avalon-support@example.edu'
 solr:
   configset: avalon
   configset_source_path: <%= File.join(Rails.root, 'solr', 'config') %>
@@ -39,12 +39,14 @@ solr:
     rule:
     shards:
     snitch:
+zookeeper:
+  connection_str: "localhost:9983/configs"
 streaming:
-  server: :wowza
+  server: :generic
   stream_token_ttl: 20 #minutes
-  content_path: '/var/avalon/rtmp_streams'
-  rtmp_base: 'rtmp://loclhost/avalon'
-  http_base: 'https://loclhost:1935/avalon/_definst_'
+  content_path: '/srv/avalon/content'
+  rtmp_base: 'rtmp://localhost/avalon'
+  http_base: 'http://localhost:3000/streams'
   default_quality: 'auto'
 redis:
   host: localhost
@@ -54,6 +56,10 @@ groups:
 master_file_management:
   strategy: 'none' #'delete', or 'move' (for move uncomment and configure next line)
   #path: '/path/to/move/to'
+bib_retriever:
+  protocol: sru
+  url: http://zgate.example.edu:9000/exampledb
+  query: rec.id='%s'
 controlled_vocabulary:
   path: config/controlled_vocabulary.yml
 encode_throttling:
@@ -76,3 +82,4 @@ auth:
         :oauth_credentials:
           <%= ENV['LTI_AUTH_KEY'] %>: <%= ENV['LTI_AUTH_SECRET'] %>
             <% end %>
+# google_analytics_tracking_id: "someid"
