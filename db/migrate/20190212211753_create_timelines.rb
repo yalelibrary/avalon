@@ -9,7 +9,7 @@ class CreateTimelines < ActiveRecord::Migration[5.1]
       t.string :tags
       t.string :source
       t.text :manifest
-
+      t.bigint :user_id
       t.timestamps
     end
   end
