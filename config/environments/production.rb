@@ -58,10 +58,10 @@ config.webpacker.check_yarn_integrity = false
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Enable logging to both stdout and file, in more compact format
-  config.logger = Logger.new("| tee -a log/production.log")
+  config.logger = Logger.new("log/production.log")
   config.lograge.enabled = true
   config.lograge.custom_options = lambda do |event|
     {:time => event.time}
