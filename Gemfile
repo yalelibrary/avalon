@@ -6,7 +6,6 @@ gem 'rails', '=5.2.3'
 gem 'bootsnap', require: false
 gem 'listen'
 gem 'sprockets', '~>3.7.2'
-gem 'sqlite3'
 
 # Assets
 gem 'coffee-rails', '~> 4.2.0'
@@ -102,6 +101,7 @@ gem 'with_locking'
 gem 'passenger'
 
 group :development do
+  gem 'sqlite3'
   gem 'capistrano', '~>3.6'
   gem 'capistrano-rails', require: false
   gem 'capistrano-resque', require: false
